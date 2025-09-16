@@ -2,9 +2,9 @@
 
 ONLY run
 ```bash 
-cat cat 
+./pet cat 
 ```
 and DO NOT RUN
 ```bash
-cat dog
+./pet dog
 ```
