@@ -1,1 +1,3 @@
-cat $@
+while true; do
+    cat $@
+done
