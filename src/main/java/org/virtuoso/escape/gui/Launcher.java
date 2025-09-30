@@ -1,4 +1,4 @@
-package org.virtuoso.escape;
+package org.virtuoso.escape.gui;
 
 import javafx.application.Application;
 

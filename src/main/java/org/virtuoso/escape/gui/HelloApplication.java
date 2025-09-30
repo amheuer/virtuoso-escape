@@ -1,4 +1,4 @@
-package org.virtuoso.escape;
+package org.virtuoso.escape.gui;
 
 // JEP 511
 import module javafx.graphics;
