@@ -6,5 +6,5 @@ package org.virtuoso.escape.model;
 public enum Difficulty {
     TRIVIAL,
     SUBSTANTIAL,
-    VIRTUOSTIC
+    VIRTUOSIC
 }
