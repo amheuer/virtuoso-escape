@@ -1,7 +1,12 @@
 package org.virtuoso.escape.model.actions;
-public class RemoveTime implements Action{
+
+import org.virtuoso.escape.model.GameState;
+
+import java.time.Duration;
+
+public record RemoveTime(Duration time) implements Action{
     @Override
-    public String execute() {
-        return "";
+    public void execute() {
+        GameState.getInstance().addTime(time.negated());
     }
 }

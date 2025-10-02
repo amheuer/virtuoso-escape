@@ -1,7 +1,10 @@
 package org.virtuoso.escape.model.actions;
-public class GiveItem implements Action{
+
+import org.virtuoso.escape.model.GameState;
+
+public record GiveItem(Item item) implements Action{
     @Override
-    public String execute() {
-        return "";
+    public void execute() {
+        GameState.getInstance().addItem(item);
     }
 }
