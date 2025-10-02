@@ -1,7 +1,13 @@
 package org.virtuoso.escape.model.account;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+
 /**
- * @author gabri, Treasure
+ * @author Treasure
+ * @author gabri
  */
 public class Account {
     private String hashedPassword;
@@ -9,36 +15,39 @@ public class Account {
     private Score highScore;
 
     public Account(String username, String password) {
-		this.username = username;
-		this.hashedPassword = hashPassword(password);
-    }// End of constructor(String, String)
+        this.username = username;
+        this.hashedPassword = hashPassword(password);
+    }
 
-    public Account(String username, String password, Score highScore){
+    public Account(String username, String password, Score highScore) {
+        this(username, password);
+        this.highScore = highScore;
+    }
 
-    }// End of constructor(String, String, Score)
+    public void setHighScore(Score score) {
+        this.highScore = score;
+    }
 
-    public void setHighScore(Score score){
-		this.highScore = score;
-    }// End of setHighScore
-
-    public String getUsername(){
+    public String getUsername() {
         return this.username;
-    }// End of getUsername
+    }
 
     public Score getHighScore() {
         return this.highScore;
-    }// End of getHighScore
+    }
 
-	private String hashPassword(String password){
-		return String.valueOf(password.hashCode());
-
-		//OR
-
-		/*int hash = 0;
-		for (char c : password.toCharArray()){
-			hash += c;
-		}// End of for
-		return String.valueOf(hash);*/
-
-	}// End of hashPassword
-}// End of Account
+    private String hashPassword(String password) {
+        try {
+            SecureRandom random = new SecureRandom();
+            byte[] salt = new byte[16];
+            random.nextBytes(salt);
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            md.update(salt);
+            byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            return String.valueOf(hash);
+        } catch (NoSuchAlgorithmException e) {
+            // TODO(gabri) come up with a more elegant way to proceed.
+            throw new RuntimeException(e);
+        }
+    }
+}
