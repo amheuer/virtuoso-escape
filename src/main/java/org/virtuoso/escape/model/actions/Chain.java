@@ -1,8 +1,10 @@
 package org.virtuoso.escape.model.actions;
-public class Chain implements Action{
-    public
+
+import java.util.Arrays;
+
+public record Chain(Action... actions) implements Action{
     @Override
-    public String execute() {
-        return "";
+    public void execute() {
+        Arrays.stream(actions).forEach(Action::execute);
     }
 }
