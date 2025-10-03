@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.virtuoso.escape.model.GameState;
 import org.virtuoso.escape.model.data.DataWriter;
 
 /**
@@ -33,16 +34,21 @@ public class AccountManager {
     }
 
     public Optional<Account> login(String username, String password) {
+	    GameState gameState = GameState.getInstance();
         Account account = this.accounts.get(username);
 		String hashedPassword = Account.hashPassword(password);
 		if (account != null && account.getHashedPassword().equals(hashedPassword)){
+			gameState.begin(account);
 			return Optional.of(account);
 		}
 		return Optional.empty();
     }
 
     public Optional<Account> newAccount(String username, String password){
-        return Optional.of(new Account(username, password));
+	    GameState gameState = GameState.getInstance();
+		Account account = new Account(username, password);
+		gameState.begin(account);
+        return Optional.of(account);
     }
 
     public void logout() {
