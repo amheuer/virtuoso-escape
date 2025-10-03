@@ -1,28 +1,26 @@
 {
     "JsonLaquermelonie" : {
-        "currentFloor" : 3,
-        "currentRoom" : 2,
-        "currentEntity" : "JOE_HARDY",
-        "currentItems" : {
-            "KEY_CARD" : "key card",
-            "SQUIRREL_FOOD" : "squirrel food",
-            "LAPTOP" : "laptop",
-            "SQUIRRELS" : "squirrels"
-        },
-        "heldItem" : 0,
+        "currentFloor" : "3",
+        "currentRoom" : "2",
+        "currentEntity" : "4",
+        "currentItems" : [
+            "KEY_CARD",
+            "SQUIRREL_FOOD",
+            "LAPTOP",
+            "SQUIRRELS"
+        ],
         "time" : 1083921,
         "difficulty" : "SUBSTANTIAL"
     },
     "Jay'sSon" : {
-        "currentFloor" : 6,
-        "currentRoom" : 4,
-        "currentEntity" : "CHIP_THE_SQUIRREL",
-        "currentItems" : {
-            "DESIGN_PATTERNS_BOOK" : "design patterns book",
-            "GOLD_CLUB" : "golf club",
-            "USC_ID" : "USC ID"
-        },
-        "heldItem" : 2,
+        "currentFloor" : "6",
+        "currentRoom" : "4",
+        "currentEntity" : "6",
+        "currentItems" : [
+            "DESIGN_PATTERNS_BOOK",
+            "GOLD_CLUB",
+            "USC_ID"
+        ],
         "time" : 1372,
         "difficulty" : "TRIVIAL"
     }

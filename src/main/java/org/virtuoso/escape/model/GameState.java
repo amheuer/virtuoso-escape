@@ -2,12 +2,17 @@ package org.virtuoso.escape.model;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
+import org.json.simple.JSONObject;
 import org.virtuoso.escape.model.account.Account;
+import org.virtuoso.escape.model.data.DataWriter;
 
 public class GameState {
     private static GameState instance;
     private Floor currentFloor;
+    private Room currentRoom;
     private Entity currentEntity;
     private ArrayList<Item> currentItems;
     private Duration time;
@@ -25,7 +30,13 @@ public class GameState {
     private GameState() {};
 
     public void begin(Account account){
-        
+        JSONObject gameStateInfo = DataLoader.loadGameStateInfo(account);
+        this.currentFloor = GameInfo.getInstance().building.get((int) gameStateInfo.get("currentFloor"));
+        this.currentRoom = currentFloor.getRooms().get((int) gameStateInfo.get("currentRoom"));
+        this.currentEntity = currentRoom.getEntities().get((int) gameStateInfo.get("currentEntity"));
+        this.currentItems = new ArrayList<Item>(Arrays.steam(gameStateInfo.getcurrentItems).map(itemString -> Item.valueOf(itemString)).toArray());
+        this.time = Duration.ofSeconds((int) gameStateInfo.get("time"));
+        this.account = account;
     }
 
     public boolean hasItem(Item item){
@@ -60,8 +71,6 @@ public class GameState {
         this.time = time;
     }
 
-    p
-
     public Account getAccount() {
         return account;
     }
@@ -78,7 +87,15 @@ public class GameState {
         this.currentMessage = currentMessage;
     }
 
-    public void write() {
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
 
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
+    public void write() {
+        DataWriter.writeGameState();
     }
 }

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.virtuoso.escape.model.data.DataWriter;
+
 /**
  * @author Treasure
  * @author gabri
@@ -44,6 +46,6 @@ public class AccountManager {
     }
 
     public void logout() {
-        DataWriter.saveAccounts();
+        DataWriter.writeAccount();
     }
 }
