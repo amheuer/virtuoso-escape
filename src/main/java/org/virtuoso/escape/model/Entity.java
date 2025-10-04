@@ -5,9 +5,9 @@ public class Entity{
 
 	public Entity(String id){
 		this.id = id;
-	}// End of constructor
+	}
 
 	public String getId(){
 		return this.id;
-	}// End of getId
-}// End of Entity
+	}
+}
