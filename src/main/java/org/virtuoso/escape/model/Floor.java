@@ -1,4 +1,7 @@
 package org.virtuoso.escape.model;
+
+import java.util.ArrayList;
+
 /**
  * @author gabri
  * NOTE record automatically generates getters.

@@ -60,8 +60,6 @@ public class GameState {
         this.time = time;
     }
 
-    p
-
     public Account getAccount() {
         return account;
     }
