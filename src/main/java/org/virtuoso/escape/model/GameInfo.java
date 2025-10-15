@@ -23,4 +23,8 @@ public class GameInfo {
         return language.get(id).get(stringId);
     }
 
+    public HashMap<String,HashMap<String,String>> language(){
+        return language;
+    }
+
 }

@@ -17,10 +17,10 @@ public class GameProjection {
 		this.gameState = GameState.instance();
 	}
 
-	public boolean login(String username, String password) {
-		Optional<Account> currentAccount = this.accountManager.login(username, password);
-		return currentAccount.isPresent();
-	}
+	// public boolean login(String username, String password) {
+	// 	Optional<Account> currentAccount = this.accountManager.login(username, password);
+	// 	return currentAccount.isPresent();
+	// }
 
 	public boolean createAccount(String username, String password) {
 		Optional<Account> currentAccount = this.accountManager.newAccount(username, password);

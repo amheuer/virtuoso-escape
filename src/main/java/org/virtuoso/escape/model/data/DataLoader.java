@@ -15,6 +15,10 @@ import org.virtuoso.escape.model.Difficulty;
 import org.virtuoso.escape.model.account.Account;
 import org.virtuoso.escape.model.account.Score;
 
+/**
+ * @author Treasure
+ * @author Andrew
+ */
 public class DataLoader {
 	public static JSONObject loadAccounts() {
 		JSONObject result = new JSONObject();
@@ -97,12 +101,17 @@ public class DataLoader {
 		JSONObject result = new JSONObject();
 		JSONObject root = parseJsonFile(Path.of("json", "gamestates.json"));
 		if (root == null) return result;
-
 		for (Object key : root.keySet()) {
-			String username = String.valueOf(key);
-			Object value = root.get(username);
-			if (value instanceof JSONObject) {
-				result.put(username, (JSONObject) value);
+			String id = String.valueOf(key);
+			Object inner = root.get(id);
+			if (inner instanceof JSONObject innerObj) {
+				JSONObject map = new JSONObject();
+				for (Object sKey : innerObj.keySet()) {
+					String sk = String.valueOf(sKey);
+					Object sval = innerObj.get(sk);
+					if (sval != null) map.put(sk, String.valueOf(sval));
+				}
+				result.put(id, map);
 			}
 		}
 		return result;
@@ -117,7 +126,7 @@ public class DataLoader {
 		try (FileReader reader = new FileReader(file.toFile())) {
 			Object obj = parser.parse(reader);
 			if (obj instanceof JSONObject) return (JSONObject) obj;
-			System.err.print("Mot viable");
+			System.err.print("Not viable");
 		} catch (IOException | ParseException e) {
 			System.err.print("Could not parse file");
 		}

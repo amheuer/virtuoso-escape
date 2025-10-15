@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.virtuoso.escape.model.account.Account;
 import org.virtuoso.escape.model.data.*;
@@ -39,7 +40,11 @@ public class GameState {
 		this.currentFloor = GameInfo.instance().building.get((int) gameStateInfo.get("currentFloor"));
 		this.currentRoom = currentFloor.rooms().get((int) gameStateInfo.get("currentRoom"));
 		this.currentEntity = currentRoom.entities().get((int) gameStateInfo.get("currentEntity"));
-		this.currentItems = new ArrayList<Item>(Arrays.stream(gameStateInfo.get("currentItems").map(itemString -> Item.valueOf(itemString)).toArray());
+		this.currentItems = new ArrayList<Item>();
+		JSONArray items = (JSONArray) gameStateInfo.get("currentItems");
+		for (int i = 0; i < items.size(); i++) {
+			currentItems.add(Item.valueOf((String) items.get(i)));
+		}
 		this.time = Duration.ofSeconds((int) gameStateInfo.get("time"));
 		this.account = account;
 	}
@@ -54,6 +59,10 @@ public class GameState {
 
 	public boolean hasItem(Item item) {
 		return currentItems.contains(item);
+	}
+
+	public void addItem(Item item) {
+		currentItems.add(item);
 	}
 
 	public Floor currentFloor() {
@@ -83,6 +92,10 @@ public class GameState {
 
 	public void setTime(Duration time) {
 		this.time = time;
+	}
+
+	public void addTime(Duration time) {
+		this.time.plus(time);
 	}
 
 	public Account account() {

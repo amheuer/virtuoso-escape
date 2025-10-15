@@ -12,7 +12,7 @@ public enum Item {
         this.id = id;
     }
 
-    public String name() {
+    public String itemName() {
         return this.name;
     }
 
