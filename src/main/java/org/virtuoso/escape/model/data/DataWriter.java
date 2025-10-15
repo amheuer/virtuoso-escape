@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.virtuoso.escape.model.account.Account;
-import org.virtuoso.escape.model.account.AccountManager;
 import org.virtuoso.escape.model.*;
 
 /**
@@ -22,7 +21,7 @@ public class DataWriter {
 	public static void writeGameState() {
 		GameState currentGameState = GameState.instance();
 		JSONObject currentGameStateMap = loadGameStateInfo(currentGameState);
-		JSONObject allGameStatesMap = AccountManager.instance().gameStates;
+		JSONObject allGameStatesMap = DataLoader.loadGameStates();
 		allGameStatesMap.put(currentGameState.account().id().toString(), currentGameStateMap);
 		writeToFile(ACCOUNTS_PATH, allGameStatesMap);
 	}
@@ -31,7 +30,7 @@ public class DataWriter {
 	public static void writeAccount() {
 		Account currentAccount = GameState.instance().account();
 		JSONObject currentAccountMap = loadAccountInfo(currentAccount);
-		JSONObject allAccountsMap = AccountManager.instance().accounts;
+		JSONObject allAccountsMap = DataLoader.loadAccounts();
 		allAccountsMap.put(currentAccount.id().toString(), currentAccountMap);
 		writeToFile(GAME_STATES_PATH, allAccountsMap);
 	}
