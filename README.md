@@ -50,7 +50,7 @@ $ ./gradlew formatCheck
 ```
 
 ## Object Links
-[Presentation](https://youtu.be/WQrHCvIvSWg)\
+[Presentation]([https://youtu.be/WQrHCvIvSWg](https://youtu.be/qdRP0IrzIHA))\
 [Sequence Diagram 1](https://lucid.app/lucidchart/40cb134e-3756-4440-ad09-f4d0a4a0e113/edit?invitationId=inv_b65edb72-5894-4f62-a823-54d7b7638531)\
 [Sequence Diagram 2](https://lucid.app/lucidchart/33a780ac-de2d-4645-adfb-09f77a2d729c/edit?invitationId=inv_52c6bdeb-b3c0-4f7f-bd75-c16037cee6b0)\
 [UML Class Diagram](https://lucid.app/lucidchart/e1068e7b-77b5-4ef0-9d64-8df9ebbfd309/edit?invitationId=inv_c4cf5f80-cfbe-42b2-bb4c-72066575da53)\
