@@ -6,7 +6,7 @@ Your task is to escape the M. Bert Storey Research and Innovation Center. All th
 
 Along the way you'll encounter a cast of characters highly interested in making sure you know theoretical computer science --- Any resemblance to persons living or dead is purely coincidental.
 
-Through at least 3 bombastic, blathering, and challenging floors, you'll be challenged in a way you've never been challenged since last semester. 
+Through 5 bombastic, blathering, and challenging floors, you'll be challenged in a way you've never been challenged since last semester. 
 
 
 ---
