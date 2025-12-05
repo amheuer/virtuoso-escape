@@ -27,6 +27,28 @@ To use the TUI
 $ ./gradlew tui
 ```
 
+## Development
+
+To run tests
+```bash
+$ ./gradlew test
+```
+
+To generate a test coverage report in `./builds/reports/jacoco`
+```bash
+$ ./gradlew coverage
+```
+
+To format the code
+```bash
+$ ./gradlew format
+```
+
+To check formatting
+```bash
+$ ./gradlew formatCheck
+```
+
 ## Object Links
 [Presentation](https://youtu.be/WQrHCvIvSWg)\
 [Sequence Diagram 1](https://lucid.app/lucidchart/40cb134e-3756-4440-ad09-f4d0a4a0e113/edit?invitationId=inv_b65edb72-5894-4f62-a823-54d7b7638531)\
